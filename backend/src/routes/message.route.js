@@ -1,11 +1,11 @@
 import express from "express"
 import { protectRoute } from "../middleware/auth.middleware.js";
-import { getMessages, getUsersForSidebar } from "../controllers/message.controller.js";
+import { getMessages, getUsersForSidebar, sendMessage } from "../controllers/message.controller.js";
 
 
 const router =express.Router();
 
 router.get("/user",protectRoute,getUsersForSidebar);
 router.get("/:id",protectRoute,getMessages);//:id it is a dynamique value 
-
+router.post("/send/:id",protectRoute,sendMessage);
 export default router;
