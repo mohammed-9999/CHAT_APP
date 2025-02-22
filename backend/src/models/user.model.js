@@ -24,6 +24,6 @@ const userSchema= new mongoose.Schema(
     {timestamps:true}
 
 );
-const User=mongoose.model("User",userSchema);
+const User=mongoose.model("User",userSchema);//model("User",userShema)=> (user) c'est le nom de tablaeau qui va sauvgarder dans mongodb
 
 export default User;
