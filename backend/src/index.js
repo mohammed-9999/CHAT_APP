@@ -11,7 +11,7 @@ const app =express();
 
 
 const PORT =process.env.PORT;
-//adding middelware
+//adding middelware to accept send json file in body
 app.use(express.json());
 //adding this code whene creat a auth.middleware.js file for protectRouter 
 app.use(cookieParser());
