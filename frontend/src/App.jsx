@@ -5,12 +5,12 @@ import SignUpPage from "./Pages/SignUpPage";
 import ProfilePage from "./Pages/ProfilePage";
 import HomePage from "./Pages/HomePage";
 import SettingsPage from "./Pages/SettingsPage";
-import { axiosInstance } from "./lib/axios";
 import { useAuthStore } from "./store/useAuthStore";
 import { useEffect } from "react";
 import { Loader } from 'lucide-react';
 import NavBar from "./components/Navbar";
-import Toaster from"react-hot-toast";
+import { Toaster } from "react-hot-toast";
+
 
 
  const App = () => {
@@ -42,6 +42,7 @@ import Toaster from"react-hot-toast";
         <Route path='/login' element={!authUser ?<LoginPage/> :<Navigate to="/"/> }/>
         <Route path='/setting' element={<SettingsPage/>}/>
         <Route path='/profile' element={authUser? <ProfilePage/>:<Navigate to="/login"/>}/> 
+        
       </Routes>
       <Toaster/>
      
