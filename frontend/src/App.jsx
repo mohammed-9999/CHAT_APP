@@ -1,15 +1,18 @@
 
 import {Navigate, Route, Routes }from "react-router-dom";
-import Navbar from "./components/Navbar";
-import LoginPage from "./components/LoginPage";
-import SignUpPage from "./components/SignUpPage";
-import ProfilePage from "./components/ProfilePage";
-import HomePage from "./components/HomePage";
-import SettingsPage from "./components/SettingsPage";
+import LoginPage from "./Pages/LoginPage";
+import SignUpPage from "./Pages/SignUpPage";
+import ProfilePage from "./Pages/ProfilePage";
+import HomePage from "./Pages/HomePage";
+import SettingsPage from "./Pages/SettingsPage";
 import { axiosInstance } from "./lib/axios";
 import { useAuthStore } from "./store/useAuthStore";
 import { useEffect } from "react";
 import { Loader } from 'lucide-react';
+import NavBar from "./components/Navbar";
+import Toaster from"react-hot-toast";
+
+
  const App = () => {
   const{authUser,checkAuth,isCheckingAuth}=useAuthStore();
 
@@ -31,7 +34,7 @@ import { Loader } from 'lucide-react';
   return (
     <div>
       
-      <Navbar/>
+      <NavBar/>
 
       <Routes>
         <Route path='/' element={authUser? <HomePage/> :<Navigate to="/login"/>}/>
@@ -40,7 +43,7 @@ import { Loader } from 'lucide-react';
         <Route path='/setting' element={<SettingsPage/>}/>
         <Route path='/profile' element={authUser? <ProfilePage/>:<Navigate to="/login"/>}/> 
       </Routes>
-
+      <Toaster/>
      
     </div>
   )
