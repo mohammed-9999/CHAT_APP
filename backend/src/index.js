@@ -6,9 +6,12 @@ import cors from "cors"
 
 import {connectDB} from "./lib/db.js"
 import cookieParser from "cookie-parser"
+import {app,server} from "./lib/socket.js"
 //dotenv.config(); pour acceder a les parametre dans fichier .env
 dotenv.config();
-const app =express();
+
+//WE CREAT A SERVER IN SOCKET.JS FILE AND THIS CODE NOT WORKING NOW !
+//const app =express(); //DELETED
 
 
 const PORT =process.env.PORT;
@@ -28,8 +31,14 @@ app.use(cors({
 app.use("/api/auth",authRoutes);
 app.use("/api/message",messageRoutes);
 
+// we added a socket then this code is not working now 
+// app.listen(PORT,()=>{
+//     console.log("server is runing on port :"+ PORT)
+//     connectDB()
+// });
 
-app.listen(PORT,()=>{
-    console.log("server is runing on port :"+ PORT)
-    connectDB()
-});
+// UPDATED CODE 
+server.listen(PORT, () => {
+    console.log("server is running on PORT:" + PORT);
+    connectDB();
+  });
